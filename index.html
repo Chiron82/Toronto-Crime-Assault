@@ -56,7 +56,7 @@
       line-height: 18px;
       height: 100px;
       margin-bottom: 40px;
-      width: 100px;
+      width: 135px;
     }
     .legend-key {
       display: inline-block;
@@ -66,16 +66,27 @@
       margin-bottom: 5px;
       margin-right: 5px;
     }
+
+    
+
+ 
+
 </style>
+
+
 </head>
 <body>
   <div id="map"></div>
   <div class="map-overlay" id="features">
-    <h2>Crime Rate Toronto: Assault Average by Neighbourhood </h2>
-    <div id="pd"><p>The assault average is:</p></div>
+    <h2>Crime Rate Toronto: Homicide by Neighbourhood </h2>
+    <div id="pd"><p>The homicide rate is:</p></div>
   </div>
   <div class="map-overlay" id="legend"></div>
 <script>
+
+
+
+
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidGhvbWFzanN0ZXdhcnQiLCJhIjoiY2toMTZvNjdiMHRiZTJ2cm53NmFwdHlleSJ9.dFCWf1dOPGDDFeqTWW01bQ'; 
 var map = new mapboxgl.Map({
@@ -84,8 +95,8 @@ var map = new mapboxgl.Map({
     zoom: 5,
     center: [-79.357501, 43.626337] 
   });
- var layers = ['0-18', '18-138','138-495','495-852'];
- var colors = ['#2479b2', '#9589f0', '#ef4e58', '#e10513'];
+ var layers = ['0-0.625', '0.625-1.25','1.25-2','2-2.5'];
+ var colors = ['#723ff3', '#5f12d3', '#f226ca', '#f94d6a'];
 for (i = 0; i < layers.length; i++) {
       var layer = layers[i];
       var color = colors[i];
@@ -116,18 +127,19 @@ map.on('load', function() {
           console.log(states[0]);
           document.getElementById('pd').innerHTML =
         '<h3><strong>' + states[0].properties.Neighbourhood +
-             '<p><br></p>' + "Neighbourhood Assault Average:  "+
-               states[0].properties.Assault_AVG +
+             '<p><br></p>' + "Neighbourhood Homicide Average:  "+
+               states[0].properties.Homicide_AVG +
               '</strong></h3><p><strong><em>'
           return;
           }
 
            else {
             document.getElementById('pd').innerHTML =
-              '<p>This choropleth map exhibits the average Assault rates of Toronto Neighbourhoods between 2014-2019.</p>';
+              '<p>This choropleth map exhibits the average Homicide rates of Toronto Neighbourhoods between 2014-2019.</p>';
           }
         });
     });
+
 
 </script>
 </body>
